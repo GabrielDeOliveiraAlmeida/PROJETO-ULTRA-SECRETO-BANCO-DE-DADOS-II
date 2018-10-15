@@ -1,0 +1,150 @@
+
+#mapa {
+    width: 900px;
+    height: 450px;
+    border: 10px solid #ccc;
+    margin: 0 auto;
+    position: relative;
+}
+#site {
+    width: 900px;
+    margin-left: 250px;
+}
+
+.div-table{
+    height: 70%;
+    max-height: 450px;
+    overflow: auto;
+}
+
+.selecionado{background-color: #CFD8DC}
+
+.submit{
+    float:right;
+    top:0;
+}
+
+/*MATERIALIZE*/
+.carousel .carousel-item{
+    width: 100%;
+}
+.tabs .tab a{
+    color:#00ACC1;
+}
+.tabs .tab a:hover,.tabs .tab a.active {
+    background-color:transparent;
+    color:#008B9B;
+}
+.tabs .tab.disabled a,.tabs .tab.disabled a:hover {
+    color:rgba(102,147,153,0.7);
+}
+.tabs .indicator {
+    background-color:#009BAD;
+}
+
+table.highlight tbody tr:hover {
+    background-color:#CFD8DC !important;
+}
+/*
+    TABELA DA SEMANA CSS
+ */
+.closeTable{
+    position: sticky;
+    float:right;
+    top:0;
+}
+
+.tableWeek{
+    height: auto;
+    max-height: 350px;
+    overflow:auto;
+}
+
+/* =============== Estilos do autocomplete =============== */
+.ui-autocomplete { 
+	background: #fff; 	
+	cursor: pointer; 
+	width: 900px !important;
+}
+
+
+.ui-autocomplete .ui-menu-item:hover { background: #eee }
+
+.ui-autocomplete .ui-corner-all {
+    color: #666 !important;
+    display: block;
+}
+
+/*
+    retirar seleção da tabela.
+ */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+
+/*
+    context menu
+ */
+
+.contextmenu{
+    top: 50px;
+    visibility:hidden;
+    background:#ffffff;
+    border:1px solid #8888FF;
+    z-index: 10;
+    position: relative;
+    width: 300px;
+}
+.contextmenu div{
+    padding-left: 5px
+}
+/*	start styles for the ContextMenu	*/
+.context_menu{
+    background-color:white;
+    border:1px solid gray;
+}
+.context_menu_item{
+    padding:3px 6px;
+}
+.context_menu_item:hover{
+    background-color:#CCCCCC;
+    color:#26A69A;
+}
+.context_menu_separator{
+    background-color:gray;
+    height:1px;
+    margin:0;
+    padding:0;
+}
+/*	end styles for the ContextMenu	*/
+
+
+header, main, footer {
+    padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
+
+.side-nav{
+    width:200px;
+}
+
+footer{
+    @extend .page-footer;
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color:#26A69A;
+}

@@ -14,6 +14,7 @@ if((isset($_POST['email'])) && (isset($_POST['senha']))){
 
 
     if(isset($resultado)){
+        $_SESSION['user'] = $resultado;
         header("Location: rota.php");
     }else{
         $_SESSION['loginErro'] = "Usuário ou senha Inválido";

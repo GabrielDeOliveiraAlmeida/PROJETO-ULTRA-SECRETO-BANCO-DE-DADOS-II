@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(isset($_SESSION['user'])) header("location: rota.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,13 +20,13 @@ session_start();
 
 
 <body>
-    <div id="login-page" class="row" method="POST" action="valida.php">
+    <div id="login-page" class="row">
 
         <div class="col s12 z-depth-6 card-panel">
             <h2 class="center-align">
                 HORA DO LIXO
             </h2>
-            <form class="login-page" method="POST" action="valida.php">
+            <form class="login-page" method="POST" action="login_validacao.php">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">email</i>

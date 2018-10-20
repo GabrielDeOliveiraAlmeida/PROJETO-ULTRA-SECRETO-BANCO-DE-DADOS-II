@@ -138,7 +138,7 @@ function criarRota(){
             if (status == google.maps.DirectionsStatus.OK) { // Se deu tudo certo
                 directionsDisplay.setDirections(result); // Renderizamos no mapa o resultado
             }else{
-                window.alert('Directions request failed due to ' + status);
+                window.alert('Falhou ao criar rota: ' + status);
             }
         });
 

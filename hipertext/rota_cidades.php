@@ -1,6 +1,5 @@
 <?php
 include_once("conexao.php");
-
 $termo = ($_GET['termo']);
 $q = mysqli_real_escape_string($conn, $termo);
 

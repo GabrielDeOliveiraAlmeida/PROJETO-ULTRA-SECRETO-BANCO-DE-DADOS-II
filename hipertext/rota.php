@@ -1,7 +1,7 @@
 <?php
-//include("protect.php");
-//protect();
-//?>
+include("protect.php");
+protect();
+?>
 
 
 <!DOCTYPE html>
@@ -23,80 +23,94 @@
 
 <body>
 
-    <!--BARRA DE MENU LATERAL--->
-    <!-- BARRA MENU LATERAL -->
-    <div>
-       <ul id="slide-out" class="side-nav fixed">
-          <li><div class = 'user-view'>
-             <div class= "background">
-             </div>
-             <a href="#!user"><img class="circle" src=""></a>
-             <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
-         </div></li>
-         <ul>
-             <li><div class="divider"></div></li>
-             <li><a href="rota.html">ROTAS</a></li>
-             <li><a href="driver.html">MOTORISTAS</a></li>
-             <li><a href="truck.html">CAMINHÕES</a></li>
-             <li><a href="option.html">OPÇÕES</a></li>
-             <li><a href="help.html">AJUDA</a></li>
-             <li><div class="divider"></div></li>
-             <li><a href="logout.php">SAIR</a></li>
-         </ul>
-     </ul>
- </div>
-
- <!----O MAPA ---->
- <div id="site">
-   <div class="col s3">
-
-      <!--CABEÇALHO - ABAS-->
-      <div class="row">
-         <ul class="tabs tabs-fixed-width" id="tabs" >
-            <li class="tab col s3 "><a href="#tabelarotas">ROTAS</a></li>
-            <li class="tab col s3"><a class="active" href="#googlemaps">MAPA</a></li>
-            <li id="c" class="tab col s3 disabled "><a href="#caminhao">COLETORES</a></li>
+<!-- BARRA MENU LATERAL -->
+<div>
+    <ul id="slide-out" class="side-nav fixed">
+        <li><div class = 'user-view'>
+                <div class= "background">
+                </div>
+                <a href="#!user"><img class="circle" src=""></a>
+                <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
+            </div></li>
+        <ul>
+            <li><div class="divider"></div></li>
+            <li><a href="#!">ROTAS</a></li>
+            <li><a href="driver.php">MOTORISTAS</a></li>
+            <li><a href="truck.php">CAMINHÕES</a></li>
+            <li><a href="option.php">OPÇÕES</a></li>
+            <li><a href="help.php">AJUDA</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="logout.php">SAIR</a></li>
         </ul>
-    </div>
-
-    <!--ABA TABELA COM TODAS AS ROTA-->
-    <div id="tabelarotas" class="col s12 noselect ">
-      <div class="div-table">
-         <table id="table">
-            <thead>
-                <tr>
-                   <th>Localização</th>
-               </tr>
-           </thead>
-           <tbody>
-           </tbody>
-       </table>
-   </div>
+    </ul>
 </div>
 
+<!----O MAPA ---->
+<div id="site">
+    <div class="col s3">
+
+        <!--CABEÇALHO - ABAS-->
+        <div class="row">
+            <ul class="tabs tabs-fixed-width" id="tabs" >
+                <li class="tab col s3 "><a href="#tabelarotas">ROTAS</a></li>
+                <li class="tab col s3"><a class="active" href="#googlemaps">MAPA</a></li>
+                <li id="c" class="tab col s3 disabled "><a href="#caminhao">COLETORES</a></li>
+            </ul>
+        </div>
+
+        <!--ABA TABELA COM TODAS AS ROTA-->
+        <div id="tabelarotas" class="col s12 noselect ">
+            <div class="div-table">
+                <table id="table">
+                    <thead>
+                    <tr>
+                        <th>Localização</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
 
 
-<!--ABA COM O GOOGLE MAPS E BOTÕES-->
-<div id="googlemaps" class="col s12">
-  <div class="row">
-     <input class="form_control" readonly="true" type="text" name="entrada1" id="entrada1" placeholder="Localização">
-     <button class="btn " id="adicionar" onclick="addTabela();">Adicionar</button>
-     <button class="btn "  onclick="editarTabela();">Editar</button>
-     <button class="btn "  onclick="removerTabela();">Remover</button>
-     <button class="btn right" id="submit" onclick="enviar();">Salvar</button>
-     <div class="col s5 right">
-        <form id="form" method="post">
-            <input type="text" placeholder="Cidade da Coleta" id="campo-busca" class="autocomplete">
-        </form>
-    </div>
-</div>
 
-<div id="mapa"></div>
-</div>
+        <!--ABA COM O GOOGLE MAPS E BOTÕES-->
+        <div id="googlemaps" class="col s12">
+            <div class="row">
+                <input class="form_control" readonly="true" type="text" name="entrada1" id="entrada1" placeholder="Localização">
+                <button class="btn " id="adicionar" onclick="addTabela();">Adicionar</button>
+                <button class="btn "  onclick="editarTabela();">Editar</button>
+                <button class="btn "  onclick="removerTabela();">Remover</button>
+                <button class="btn right" id="submit" onclick="enviar();">Salvar</button>
+                <div class="col s5 right">
+                    <form id="form" method="post">
+                        <input type="text" placeholder="Ex: Presidente Prudente - SP" id="campo-busca" class="autocomplete">
+                    </form>
+                </div>
+            </div>
+            
+
+            <!-- MAPA -->
+            <div id="mapa"></div>
+        </div>
 
 
-</div> <!--col s3-->
+        <!-- INFORMAÇÕES SOBRE DETERMINADO DIA DA SEMANA -->
+        <div id="caminhao" class="col s12">
+            <div class="col s12">
+                <p>MOTORISTA</p>
+
+                <p>CAMINHÃO</p>
+            </div>
+        </div>
+
+
+
+    </div> <!--col s3-->
 </div> <!--SITE-->
+
 <!---TABELA DO DIA DA SEMANA - BOTÃO DIREITO-->
 <script>
  var htmlTableWeek = "<div class='tableWeek'>\n" +
@@ -177,6 +191,13 @@
     var elem = document.getElementById('tabs');
     $(document).ready(function() {
         Materialize.updateTextFields();
+        $.ajax({
+            url:"driver_tabela.php",
+            method:"POST",
+            success:function(data){
+                $('#table_driver body').html(data);
+            }
+        });
     });
 </script>
 

@@ -1,3 +1,7 @@
+/*
+    AUTO COMPLETE DE CIDADES
+*/
+
 $('#campo-busca').autocomplete({
     minLength: 2,
     autoFocus: true,
@@ -5,7 +9,7 @@ $('#campo-busca').autocomplete({
     appendTo: '#form',
     source: function(request, response){
         $.ajax({
-            url: 'busca_cidade.php',
+            url: 'rota_cidades.php',
             type: 'get',
             dataType: 'html',
             data: {
@@ -13,7 +17,6 @@ $('#campo-busca').autocomplete({
             }
         }).done(function(data){
             if(data.length > 0){
-
                 data = data.split(',');
                 response( $.each(data, function(key, item){
                     return({
@@ -26,6 +29,9 @@ $('#campo-busca').autocomplete({
 });
 
 
+/*
+    ATUALIZAR O MAPA NO LOCAL ESCOLHIDO
+*/
 function getLocation(address) {
     geocoder.geocode({ 'address': $('#campo-busca').val() }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -38,8 +44,16 @@ function getLocation(address) {
         });
 };
 
+
+/**
+ * TEMPO LIMITE PARA ATUALIZAR MAPA
+ */
 var typingTimer; //timer identifier
 var doneTypingInterval = 3000; //time in ms, 1 second for example
+
+/**
+ * CAMPO BUSCA É ONDE SERÁ DIGITADO O LOCAL E APOS DETERMINADO TEMPO ATUALIZARÁ O MAPA
+ */
 
 $('#campo-busca').on("keyup",function(){
     clearTimeout(typingTimer);

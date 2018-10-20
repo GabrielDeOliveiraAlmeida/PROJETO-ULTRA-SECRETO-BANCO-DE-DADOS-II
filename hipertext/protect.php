@@ -5,9 +5,7 @@ if(!function_exists("protect")){
         if(!isset($_SESSION)){
             session_start();
         }
-        if(!isset($usuario)){
-            header('Location: login.php');
-        }
+        if(!$_SESSION['user']) header("Location: login.php");
     }
 }
-?>﻿
+?>

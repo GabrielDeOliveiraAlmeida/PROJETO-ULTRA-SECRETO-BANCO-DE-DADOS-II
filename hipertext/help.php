@@ -1,3 +1,8 @@
+<?php
+include("protect.php");
+protect();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,10 +33,10 @@
         <ul>
             <li><div class="divider"></div></li>
             <li><a href="rota.php">ROTAS</a></li>
-            <li><a href="driver.html">MOTORISTAS</a></li>
-            <li><a href="truck.html">CAMINHÕES</a></li>
-            <li><a href="option.html">OPÇÕES</a></li>
-            <li><a href="help.html">AJUDA</a></li>
+            <li><a href="driver.php">MOTORISTAS</a></li>
+            <li><a href="truck.php">CAMINHÕES</a></li>
+            <li><a href="option.php">OPÇÕES</a></li>
+            <li><a href="#!">AJUDA</a></li>
             <li><div class="divider"></div></li>
             <li><a href="logout.php">SAIR</a></li>
         </ul>

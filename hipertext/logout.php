@@ -3,7 +3,9 @@ session_start();
 
 unset(
     $_SESSION['usuario'],
-    $_SESSION['senha']
+    $_SESSION['senha'],
+    $_SESSION['user'],
+    $_SESSION['conn']
 );
 
 $_SESSION['logindeslogado'] = "Deslogado com sucesso";

@@ -1,19 +1,19 @@
 /*
     FUNÇÕES PARA TABELA E INTERFACE
  */
-var indexTable;
+var indexTable=0;
 var table = document.getElementById("table");
 
 var salvar = false;
 
 //PERGUNTAR SE REALMENTE DESEJA SAIR
-window.onbeforeunload = confirmExit;
-function confirmExit()
-{
-    if(salvar == false){
-        return "Deseja realmente sair desta página?";
-    }
-}
+// window.onbeforeunload = confirmExit;
+// function confirmExit()
+// {
+//     if(salvar == false){
+//         return "Deseja realmente sair desta página?";
+//     }
+// }
 
 /*
     TABELA
@@ -56,7 +56,10 @@ function removerEfeito(tabela){
 function editarTabela(){
     var entrada1 = document.getElementById("entrada1").value;
     if(entrada1 !="" && indexTable != 0){
+        editarArmazenamento(indexTable);
         table.rows[indexTable].cells[0].innerHTML = entrada1;
+        table.rows[indexTable].cells[1].innerHTML = x_ult;
+        table.rows[indexTable].cells[2].innerHTML = y_ult;
         criarRota();
         Materialize.toast('Endereço Substituido!', 1000);
     }
@@ -64,29 +67,35 @@ function editarTabela(){
 }
 
 function removerTabela(){ //REMOVER LINHA DA TABELA 1
-    if(indexTable != 0 ){
+
+    if(indexTable > 0 ){
         if(table.rows.length <=3){
             limparRotas();
         }
-        table.deleteRow(indexTable);
-        document.getElementById("entrada1").value = "";
-        criarRota();
-        Materialize.toast('Endereço Removido!', 1000);
-    }
+        if(table.rows.length > 1){
+            removerArmazenamento(indexTable);
+            table.deleteRow(indexTable);
+            document.getElementById("entrada1").value = "";
+            criarRota();
+            Materialize.toast('Endereço Removido!', 1000);
+            indexTable = table.rows.length-1;
+        }else Materialize.toast('Não há endereço selecionado!', 1000);
+    } else Materialize.toast('Não há endereço selecionado!', 1000);
 }
 
 function addTabela(){
     var entrada1 = document.getElementById("entrada1").value;
     if(entrada1 != "") {
-        $('#table tr:last').after('<tr scope="row"> <td>' + entrada1);
+        $('#table tr:last').after('<tr scope="row"> <td>' + entrada1+'</td><td>'+x_ult+'</td>'+'<td>'+y_ult+'</td></tr>' );
         selectedRowToInput();
         document.getElementById("entrada1").focus();
         document.getElementById("entrada1").select();
         criarRota();
+        armazenarCoord();
         Materialize.toast('Adicionado!', 1000);
         document.getElementById("entrada1").value = "";
-
-    }
+        indexTable = table.rows.length-1;
+    } 
 }
 //
 function apagarTabela() {

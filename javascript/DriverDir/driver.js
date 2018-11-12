@@ -40,8 +40,6 @@ $(document).ready(function(){
                     var resp = JSON.parse(data);
                     $("#resp").html(resp.msg);
                     carregarTabela();
-                    console.log(resp);
-                    console.log(resp.sucesso);
                     if(resp.sucesso){
                         limparForm();
                     }

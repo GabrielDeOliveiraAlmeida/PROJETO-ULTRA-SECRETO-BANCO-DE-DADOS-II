@@ -14,7 +14,7 @@ create table cidades(
     estado int(2) not null,
     uf varchar(4) not null,
     nome varchar(50) not null
-    );
+);
 
 create table motorista(
 	email varchar(60) unique primary key,
@@ -31,60 +31,155 @@ create table caminhao(
     placa varchar(6) unique primary key
 );
 
+create table rota(
+	id_poligono int not null,
+    x_origem double not null,
+    y_origem double not null,
+    x_destino double not null,
+    y_destino double not null,
+    primary key(id_poligono),
+	constraint fk_id_poligono foreign key(id_poligono) references poligono(id)
+	on delete cascade
+	on update cascade
+);
 
 create table rota(
-	id MEDIUMINT NOT null auto_increment primary key,
-	origem varchar(100) not null,
-    destino varchar(100) not null,
-    id_rota int not null,
-	constraint fk_id_rota foreign key(id_rota) references waypoints(id)
-    on delete cascade
-    on update cascade
+	id_poligono int not null,
+    id_inicio int not null,
+    id_fim int,
+    primary key(id_poligono),
+	constraint fk_id_poligono foreign key(id_poligono) references poligono(id),
+    constraint fk_id_inicio foreign key(id_inicio) references coordenada(id),
+    constraint fk_id_fim foreign key(id_fim) references coordenada(id)
+	on delete cascade
+	on update cascade
 );
 
 create table waypoints(
-	id MEDIUMINT NOT null auto_increment primary key,
-    endereco varchar(100)    
+	id int not null auto_increment, 
+	id_rota int not null,
+	x_endereco double  not null,
+    y_endereco double not null,
+    primary key(id),
+	constraint fk_id_rota foreign key(id_rota) references rota(id_poligono)
+	on delete cascade
+    on update cascade
+);
+create table waypoints(
+	id int not null auto_increment, 
+	id_rota int not null,
+	endereco varchar(100) not null,
+    primary key(id),
+	constraint fk_id_rota foreign key(id_rota) references rota(id_poligono)
+	on delete cascade
+    on update cascade
 );
 
 create table rota_real(
-	id MEDIUMINT NOT null auto_increment primary key,
-	latitude varchar(15) not null, 
-	longitude varchar(15) not null
+	id int NOT null auto_increment primary key,
+	x_endereco double not null,
+    y_endereco double not null
 );
 
-create table poligono(
-	id MEDIUMINT NOT null auto_increment primary key,
-    id_cidade int(4) not null,
-    id_rota MEDIUMINT,
-    id_rota_real MEDIUMINT,
-    id_coord MEDIUMINT,
-	constraint fk_id_cidade foreign key(id_cidade) references cidades(id),
-	constraint fk_id_rota foreign key(id_rota) references waypoints(id),
-    constraint fk_id_rota_real foreign key(id_rota_real) references rota_real(id),
-    constraint fk_id_coord foreign key(id_coord) references coordenadas(id)
+create table conograma(
+	dia varchar(15) not null,
+    hora varchar(10) not null,
+    email varchar(60),
+    placa varchar(6),
+    primary key(dia,hora),
+    constraint fk_email foreign key(email) references motorista(email),
+    constraint fk_placa foreign key(placa) references caminhao(placa)
     on delete cascade
     on update cascade
+    
+);
+
+create table rota(
+	id int not null,
+	x_origem double ,
+    y_origem double,
+    x_destino double ,
+    y_destino double ,
+    primary key(id),
+    constraint fk_idpoligono foreign key(id) references poligono(id)
+	on delete cascade
+	on update cascade
+);
+
+
+
+-- --------------------------------------------------------------------------------
+drop table if exists coordenadas;
+drop table if exists poligono;
+
+create table poligono(
+	id int NOT null auto_increment primary key,
+    coord varchar(100) not null,
+    id_cidade int(4) not null,
+    cor varchar(10) not null,
+--     id_rota MEDIUMINT,
+--     id_rotareal MEDIUMINT,
+--     id_conograma MEDIUMINT,
+ 	constraint fk_id_cidade foreign key(id_cidade) references cidades(id)
+-- 	constraint fk_id_rota foreign key(id_rota) references waypoints(id)
+--     constraint fk_id_rota_real foreign key(id_rotareal) references rota_real(id)
+--     constraint fk_id_conograma foreign key(id_conograma) references conograma(dia,hora)
+     on delete cascade
+     on update cascade
 );
 
 create table coordenadas(
-	id MEDIUMINT NOT null auto_increment primary key,
-	latitude varchar(15) not null, 
-	longitude varchar(15) not null
+	id int NOT null auto_increment primary key,
+    id_rota int not null,
+    coord varchar(100) not null,
+	x_coord double not null,
+    y_coord double not null,
+	constraint fk_id_rota foreign key(id_rota) references poligono(id)
+	on delete cascade
+	on update cascade
 );
 
-create table semana(
-	dia varchar(15) primary key,
-    email varchar(60),
-    placa varchar(6),
-    constraint fk_email foreign key(id_email) references motorista(email),
-    constraint fk_placa foreign key(id_placa) references caminhao(placa)
-    on delete cascade
-    on update cascade
-);
+delete from poligono;
+delete from coordenadas;
+SET SQL_SAFE_UPDATES = 0;
 
-
-select * from motorista;
+select * from rota order by id desc;
+use horadolixo;
+select * from cidades where LOCATE('Presidente Prudente', nome);
+select * from poligono;
+select * from coordenadas;
+select * from rota;
 select * from caminhao order by modelo;
 INSERT INTO motorista(email, nome, sobrenome, telefone, senha) VALUES ('ga.felis@outlook.com', 'Gabriel','$sobrenome','$telefone', '$senha');
-SELECT * FROM horadolixo.cidade WHERE LOCATE('Pr',nome) ORDER BY nome ASC, estado ASC limit 10
+insert into rota(origem, destino) value ('teste','teste');
+SELECT * FROM horadolixo.cidade WHERE LOCATE('Pr',nome) ORDER BY nome ASC, estado ASC limit 10;
+SELECT * FROM cidades WHERE LOCATE('Jardim',nome);
+select id from cidades where LOCATE('Presidente Prudente', nome) and uf = 'SP';
+
+update adm set senha = "root";
+select * from adm;	
+insert into rota values(28, "Ruas2","Rua1");
+select * from coordenadas where 14 = coordenadas.id_poligono;
+insert into poligono(coord, id_cidade) values ("abc", 1);
+call inserircoord(1,0,9);
+select id_inicio from rota where 14 = rota.id_poligono is null;
+replace into rota(id_poligono,id_inicio, id_fim) values(20,90,93);
+select * from coordenadas,rota where 23 = coordenadas.id_poligono and rota.id_inicio = 23;
+update coordenadas set 
+    x_coord = 123.3,
+    y_coord = -51.405464809692376 where 10=coordenadas.id_rota and coordenadas.id = 83;
+update rota set
+    x_origem = 123.3,
+    y_destino = -51.405464809692376 where 10=rota.id;
+    
+    
+select * from coordenadas where 12 = coordenadas.id_rota;
+
+select poligono.id, coord, cor from poligono 
+where id_cidade = 9286;
+
+select x_coord, y_coord from coordenadas
+where id_rota = 3;
+
+call recarregar_rota(7);
+call inserircoord(1, "Ruá Bâla", 1.233232, 12.2112);

@@ -9717,10 +9717,10 @@ INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
 (9655, 27, 'TO', 'Palmeiropolis'),
 (9656, 27, 'TO', 'Paraiso do Tocantins'),
 (9657, 27, 'TO', 'Parana'),
-(9658, 27, 'TO', 'Pau D''arco');
-INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
+(9658, 27, 'TO', 'Pau D''arco'),
 (9659, 27, 'TO', 'Pe da Serra'),
-(9660, 27, 'TO', 'Pedro Afonso'),
+(9660, 27, 'TO', 'Pedro Afonso');
+INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
 (9661, 27, 'TO', 'Pedro Ludovico'),
 (9662, 27, 'TO', 'Peixe'),
 (9663, 27, 'TO', 'Pequizeiro'),
@@ -9735,7 +9735,8 @@ INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
 (9672, 27, 'TO', 'Porto Alegre do Tocantins'),
 (9673, 27, 'TO', 'Porto Lemos'),
 (9674, 27, 'TO', 'Porto Nacional'),
-(9675, 27, 'TO', 'Praia Norte'),
+(9675, 27, 'TO', 'Praia Norte');
+INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
 (9676, 27, 'TO', 'Presidente Kennedy'),
 (9677, 27, 'TO', 'Principe'),
 (9678, 27, 'TO', 'Pugmil'),
@@ -9779,7 +9780,7 @@ INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
 --
 -- Indexes for dumped tables
 --
-
+select * from cidades where id = 9714;
 --
 -- Indexes for table `tb_cidades`
 --

@@ -72,7 +72,6 @@ carregarTabela();
  * LIMPAR TODOS OS CAMPOS DO FORMULARIO
  */
 function limparForm(){
-    console.log("limpar");
     $("#placa_truck").val("");
     $("#ano_truck").val("");
     $("#serie_truck").val("");

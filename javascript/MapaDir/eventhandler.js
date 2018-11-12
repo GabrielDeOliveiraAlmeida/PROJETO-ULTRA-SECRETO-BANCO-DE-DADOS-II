@@ -23,17 +23,20 @@ map.addListener('dblclick', function(){
 /*
     EVENTOS MARCADOR
  */
-marker.addListener( 'dragend', function () {
-    geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-                $('#entrada1').val(results[0].formatted_address);
-                $('#txtLatitude').val(marker.getPosition().lat());
-                $('#txtLongitude').val(marker.getPosition().lng());
-            }
-        }
+function eventsMarker(marker){
+    marker.addListener('drastart',function(){
+        position = marker.getPosition();
     });
-});
+    marker.addListener('dragend', function (e) {
+        console.log("OI");
+        if (google.maps.geometry.poly.containsLocation(marker.getPosition(), selected_shape) == false) {
+            marker.setPosition(new google.maps.LatLng(x_ult, y_ult));
+        }else{
+            positionMarker(e);
+        }
+        
+    }); 
+}
 //-------------------------------------------------------
 
 
@@ -41,6 +44,24 @@ marker.addListener( 'dragend', function () {
     EVENTO POLIGONO
  */
 drawingManager.addListener('polygoncomplete', function(polygon){
+    eventosPoligono(polygon);
+     
+    //ADICIONAR AO VETOR DE POLIGONOS
+    polygons.push(polygon);
+    
+    //ATUALIZAR POLIGONO
+    atualizarPolygon(polygon);
+    
+    //Armazenar no banco de dados
+    console.log(selected_shape.identificador);
+    salvarPolygons();
+    
+    showContext();   
+
+});
+
+
+function eventosPoligono(polygon){
     //DESMARCAR O POLIGONO ANTIGO
     limparRotas();
     apagarTabela();
@@ -73,7 +94,6 @@ drawingManager.addListener('polygoncomplete', function(polygon){
         this.setEditable(true);
         selected_shape = this;
         contextMenu.show(event);
-
     });
 
     //MODIFICAR VERTICE ATUALIZARÁ O VETOR DE POLIGONO
@@ -81,29 +101,20 @@ drawingManager.addListener('polygoncomplete', function(polygon){
         console.log(polygon);
     });
     polygon.getPath().addListener('set_at', function () {
-
+    
     });
+}
 
 
 
-    //ADICIONAR AO VETOR DE POLIGONOS
-    polygons.push(polygon);
 
-    //ATUALIZAR POLIGONO
-    atualizarPolygon(polygon);
-    //selected_shape=polygon;
-    //selected_shape.setEditable(true);
-
-    console.log(polygons);
-    //SELECIONAR DIAS DA SEMANA
-    showContext();
-});
+        
 
     //SELECIONAR NOVO POLIGONO E CARREGAR SUA ROTA
     setSelection = function(shape){
-    selected_shape=shape;
-    carregarRotas(shape);
-}
+        selected_shape=shape;
+        carregarRotas(shape);
+    }
 
 /*
     EVENTOS CONTEXT MENU

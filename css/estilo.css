@@ -1,15 +1,14 @@
-
 #mapa {
-    width: 900px;
-    height: 450px;
-    border: 10px solid #ccc;
+    margin-left: 150px;
+    height: 87vh;
     margin: 0 auto;
     position: relative;
 }
 #site {
-    width: 900px;
-    margin-left: 250px;
+    margin-left: 150px;
+    margin-bottom: 10px;
 }
+
 
 .div-table{
     height: 70%;
@@ -28,6 +27,7 @@
 .carousel .carousel-item{
     width: 100%;
 }
+
 .tabs .tab a{
     color:#00ACC1;
 }
@@ -125,7 +125,17 @@ table.highlight tbody tr:hover {
 }
 /*	end styles for the ContextMenu	*/
 
-
+/**
+ * Tamanho das entradas no mapa principal, onde representa o campo do endereço do ponto e cidade (auto completar)
+ */
+.localidade{
+    width:700px;
+    height: 46px;
+}
+.localidade-autocomplete{
+    height: 46px;
+}
+/*-----------------------------------*/
 header, main, footer {
     padding-left: 300px;
 }
@@ -137,7 +147,7 @@ header, main, footer {
 }
 
 .side-nav{
-    width:200px;
+    width:150px;
 }
 
 footer{
@@ -148,3 +158,5 @@ footer{
     width:100%;
     background-color:#26A69A;
 }
+
+

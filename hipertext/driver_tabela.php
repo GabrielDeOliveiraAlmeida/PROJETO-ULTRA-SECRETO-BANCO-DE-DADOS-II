@@ -1,6 +1,7 @@
 <?php
 include_once('conexao.php');
-
+header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: application/json; charset=utf-8');
 
 $sql = "SELECT * FROM horadolixo.motorista ORDER BY nome";
 
@@ -25,7 +26,7 @@ if($rows > 0){
     while($row = mysqli_fetch_array($result)){
         $output .= '  
                 <tr>  
-                     <td>'.$row["nome"].' '.$row['sobrenome'].'</td>  
+                     <td>'.$row["nome"].' '.$row["sobrenome"].'</td>  
                      <td>'.$row["email"].'</td>  
                      <td>'.$row["telefone"].'</td>  
                      <td><button onclick="remover(this);" id="'.$row["email"].'" data-id="'.$row["email"].'" class="btn btn_deletar">X</button></td>  

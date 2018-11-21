@@ -20,6 +20,7 @@
 
 function salvarPolygons(){
     var coord;
+    console.log(selected_shape.getPaths);
     coord = polygonCoord(selected_shape.getPaths());
     // rota = getRota(polygons[i].rota);
     //armazenarRota(selected_shape);
@@ -49,6 +50,7 @@ function recarregarPolygonsbd(callback){
             for(var i =0 ;i<data.length ; i++){
                 var pol = decodificarCoord(data[i].pol);
                 var id = data[i].id;
+                console.log(data);
                 forma = new google.maps.Polygon({
                     path:pol,
                     draggable: false,
@@ -56,7 +58,7 @@ function recarregarPolygonsbd(callback){
                     rotas: "",
                     coleta: [],
                     identificador: id,
-                    fillColor: '#ff0000',
+                    fillColor: data[i].cor
                 });
                 selected_shape = forma;
                 selected_shape.setMap(map);
@@ -119,18 +121,6 @@ function coordtoadress(x,y, callback){
         }
     });
 }
-/**
- * Receberá todas as coordenadas dos vertices dos poligonos getPaths
- */
-function polygonCoord(paths){
-    var r=[];
-    paths=(paths.getArray)?paths.getArray():paths;
-    for(var i=0;i<paths.length;++i){
-        r.push(codificarCoord(paths[i]));
-      }
-     return r;
-  }
-
 
 /**
  * encoding para codificação
@@ -242,14 +232,70 @@ function removerPoligono(){
 }
 
 
+function changeColorBD(){
+    var data ="id="+selected_shape.identificador+"&color="+selected_shape.fillColor;
+    console.log(data);
+    $.ajax({
+        method:"post",
+        url:"../hipertext/rota_bdchange_color.php",
+        data:data,
+        success: function(data){
+            console.log(data);
+        }
+    });   
+}
 
 
-// shape.rotas = {
-//                 origin: origem,
-//                 origem_x: origem_x,
-//                 origem_y: origem_y,
-//                 destination: destino,
-//                 destino_x: destino_x,
-//                 destino_y: destino_y,
-//                 waypoints: waypts
-//             };
+function atualizarPolygonBD(){
+    console.log(selected_shape);
+    var data ="id="+selected_shape.identificador+"&coord="+polygonCoord(selected_shape.getPaths());
+    console.log(data);
+    $.ajax({
+        method:"post",
+        url:"../hipertext/rota_bdupdatepolygon.php",
+        data:data,
+        success: function(data){
+            console.log(data);
+        }
+    });      
+}
+
+/**
+ * Receberá todas as coordenadas dos vertices dos poligonos getPaths
+ */
+function polygonCoord(paths){
+    var r=[];
+    paths=(paths.getArray)?paths.getArray():paths;
+    for(var i=0;i<paths.length;++i){
+        r.push(codificarCoord(paths[i]));
+      }
+     return r;
+  }
+
+function selecaoDriverDB(){
+    var data ="dia="+diasemana;
+    $.ajax({
+        method:"post",
+        url:"../hipertext/rota_dbtabela_driver.php",
+        data:data,
+        success: function(data){
+            $("#tabelas").html(data);
+            var table = document.getElementById("selecionardrivers");
+            selectedDriver(table);
+        }
+    });         
+}
+
+function selecaoTruckDB(){
+    var data ="dia="+diasemana;
+    $.ajax({
+        method:"post",
+        url:"../hipertext/rota_dbtabela_truck.php",
+        data:data,
+        success: function(data){
+            $("#tabelas").html(data);
+            var table = document.getElementById("selecionartrucks");
+            selectedTruck(table);
+        }
+    });         
+}

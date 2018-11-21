@@ -36,6 +36,35 @@ function selectedRowToInput(){ //LINHA SELECIONADA TABELA 1
 selectedRowToInput();
 
 
+function selectedDriver(table){ //LINHA SELECIONADA TABELA 1
+    for(var i = 0; i <table.rows.length; i++){
+        table.rows[i].onclick = function(){
+            var indexTable = this.rowIndex;
+            if(indexTable != 0){
+                console.log("oi");
+                $("#selecaodriver").val(this.cells[0].innerHTML);
+                email = this.cells[1].innerHTML;
+                $("#modal2").modal("close");
+
+            }
+        };
+
+    }
+}
+
+function selectedTruck(table){ //LINHA SELECIONADA TABELA 1
+    for(var i = 0; i <table.rows.length; i++){
+        table.rows[i].onclick = function(){
+            var indexTable = this.rowIndex;
+            if(indexTable != 0){
+                $("#selecaotruck").val(this.cells[0].innerHTML);
+                placa = this.cells[1].innerHTML;
+                $("#modal2").modal("close");
+            }
+        };
+
+    }
+}
 // function selectedRowTableWeek(table){ //LINHA SELECIONADA TABELA DA SEMANA
 //     for(var i = 0; i < table.rows.length; i++){
 //         table.rows[i].onclick = function(){
@@ -162,12 +191,23 @@ function loadTable(){
         }
 }
 
+var diasemana;
 function coletores(dia){
-    $('#c').removeClass('disabled');
-    $('.tabs').tabs('select_tab', 'caminhao');
+    // $('#c').removeClass('disabled');
+    $("#modal1").modal('open');
+    diasemana = dia;
+    // $('.tabs').tabs('select_tab', 'caminhao');
 }
 
+function selecaoDriver(){
+    $("#modal2").modal('open');
+    selecaoDriverDB();
+}
 
+function selecaoTruck(){
+    $("#modal2").modal('open');
+    selecaoTruckDB();
+}
 
 //$('input.autocomplete').autocomplete({
 //     source: function (request, response) {

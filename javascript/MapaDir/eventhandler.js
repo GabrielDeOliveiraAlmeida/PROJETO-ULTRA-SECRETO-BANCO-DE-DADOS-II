@@ -98,10 +98,16 @@ function eventosPoligono(polygon){
 
     //MODIFICAR VERTICE ATUALIZARÁ O VETOR DE POLIGONO
     polygon.getPath().addListener('insert_at', function () {
-        console.log(polygon);
+        marker.setMap(null);
+        $("#entrada1").val("");
+        atualizarPolygonBD();
+        Materialize.toast('Polígono Atualizado!', 1000);
     });
     polygon.getPath().addListener('set_at', function () {
-    
+        marker.setMap(null);
+        $("#entrada1").val("");
+        atualizarPolygonBD();
+        Materialize.toast('Polígono Atualizado!', 1000);
     });
 }
 
@@ -129,6 +135,7 @@ function eventosPoligono(polygon){
                 break;
             case 'color_click':
                 changeColor();
+                changeColorBD();
                 break;
             case 'center_map_click':
                 map.panTo(latLng);

@@ -98,21 +98,37 @@ protect();
             <div id="mapa"></div>
         </div>
 
-
-        <!-- INFORMAÇÕES SOBRE DETERMINADO DIA DA SEMANA -->
-        <div id="caminhao" class="col s12">
-            <div class="col s12">
-                <p>MOTORISTA</p>
-
-                <p>CAMINHÃO</p>
-            </div>
-        </div>
-
-
-
     </div> <!--col s3-->
 </div> <!--SITE-->
 
+
+<!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <p>Motorista</p>
+        <div>
+            <input readonly="true" onclick="selecaoDriver();" type="text" id="selecaodriver" placeholder=Nome do Motorista"></input>
+            <button>-</button>
+        </div>
+        <p>Caminhão</p>
+        <div>
+            <input readonly="true" onclick="selecaoTruck();" type="text" id="selecaotruck" placeholder="Nome do Motorista"></input>
+            <button>-</button>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content" id="tabelas">
+      
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
 
 
 <!-- 
@@ -148,37 +164,37 @@ protect();
  "<tr>\n" +
  "<td>Segunda-Feira</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(0)'>+</button></td>"+
+ "<td><button onclick="+"coletores('segunda')"+">+</button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Terça-Feira</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(1)'>+</button></td>"+
+ "<td><button onclick="+"coletores('terca')"+">+</button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Quarta-Feira</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(2)'>+</button></td>"+
+ "<td><button onclick="+"coletores('quarta')"+">+</button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Quinta-Feira</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(3)'>+</button></td>"+
+ "<td><button onclick="+"coletores('quinta')"+">+</button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Sexta-Feira</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(4)'>+</button></td>"+
+ "<td><button onclick="+"coletores('sexta')"+">+</button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Sabado</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(5)'>+</button></td>"+
+ "<td><button onclick="+"coletores('sabado')"+">+</button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Domingo</td>\n" +
  "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick='coletores(6)'>+</button></td>"+
+ "<td><button onclick="+"coletores('domingo')"+">+</button></td>"+
  "</tr>\n" +
  "</tbody>\n" +
  "</table>\n" +

@@ -102,7 +102,7 @@ $("#aceito").click(function(){
                     for(var i=0 ; i<polygons.length; i++){
                         polygons[i].setMap(null);
                     }
-                    polygonCoord = [];
+                    polygons = [];
                     limparRotas();
                     recarregarPolygons();
                     Materialize.toast('Cidade encontrada!', 1000);

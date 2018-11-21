@@ -17,6 +17,8 @@ var addr;
 var cidade = "Presidente Prudente";
 var estado = "SP";
 var forma;
+var placa;
+var email;
 
 
 function initialize() {

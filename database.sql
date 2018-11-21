@@ -31,47 +31,17 @@ create table caminhao(
     placa varchar(6) unique primary key
 );
 
-create table rota(
-	id_poligono int not null,
-    x_origem double not null,
-    y_origem double not null,
-    x_destino double not null,
-    y_destino double not null,
-    primary key(id_poligono),
-	constraint fk_id_poligono foreign key(id_poligono) references poligono(id)
-	on delete cascade
-	on update cascade
-);
 
-create table rota(
-	id_poligono int not null,
-    id_inicio int not null,
-    id_fim int,
-    primary key(id_poligono),
-	constraint fk_id_poligono foreign key(id_poligono) references poligono(id),
-    constraint fk_id_inicio foreign key(id_inicio) references coordenada(id),
-    constraint fk_id_fim foreign key(id_fim) references coordenada(id)
-	on delete cascade
-	on update cascade
-);
-
-create table waypoints(
-	id int not null auto_increment, 
-	id_rota int not null,
-	x_endereco double  not null,
-    y_endereco double not null,
+create table cronograma(
+	id int NOT null auto_increment,
+    dia varchar(15) not null,
+    hora varchar(10) not null,
+    email varchar(60),
+    placa varchar(6),
     primary key(id),
-	constraint fk_id_rota foreign key(id_rota) references rota(id_poligono)
-	on delete cascade
-    on update cascade
-);
-create table waypoints(
-	id int not null auto_increment, 
-	id_rota int not null,
-	endereco varchar(100) not null,
-    primary key(id),
-	constraint fk_id_rota foreign key(id_rota) references rota(id_poligono)
-	on delete cascade
+    constraint fk_email foreign key(email) references motorista(email),
+    constraint fk_placa foreign key(placa) references caminhao(placa)
+    on delete cascade
     on update cascade
 );
 
@@ -81,34 +51,6 @@ create table rota_real(
     y_endereco double not null
 );
 
-create table conograma(
-	dia varchar(15) not null,
-    hora varchar(10) not null,
-    email varchar(60),
-    placa varchar(6),
-    primary key(dia,hora),
-    constraint fk_email foreign key(email) references motorista(email),
-    constraint fk_placa foreign key(placa) references caminhao(placa)
-    on delete cascade
-    on update cascade
-    
-);
-
-create table rota(
-	id int not null,
-	x_origem double ,
-    y_origem double,
-    x_destino double ,
-    y_destino double ,
-    primary key(id),
-    constraint fk_idpoligono foreign key(id) references poligono(id)
-	on delete cascade
-	on update cascade
-);
-
-
-
--- --------------------------------------------------------------------------------
 drop table if exists coordenadas;
 drop table if exists poligono;
 
@@ -139,6 +81,8 @@ create table coordenadas(
 	on update cascade
 );
 
+
+
 delete from poligono;
 delete from coordenadas;
 SET SQL_SAFE_UPDATES = 0;
@@ -149,6 +93,7 @@ select * from cidades where LOCATE('Presidente Prudente', nome);
 select * from poligono;
 select * from coordenadas;
 select * from rota;
+select * from motorista;
 select * from caminhao order by modelo;
 INSERT INTO motorista(email, nome, sobrenome, telefone, senha) VALUES ('ga.felis@outlook.com', 'Gabriel','$sobrenome','$telefone', '$senha');
 insert into rota(origem, destino) value ('teste','teste');
@@ -183,3 +128,5 @@ where id_rota = 3;
 
 call recarregar_rota(7);
 call inserircoord(1, "Ruá Bâla", 1.233232, 12.2112);
+
+call caminhao_que_nao_trabalham_no_dia('segunda');

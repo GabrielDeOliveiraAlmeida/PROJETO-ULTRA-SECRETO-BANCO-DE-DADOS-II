@@ -56,7 +56,6 @@ function recarregarPolygonsbd(callback){
                     draggable: false,
                     editable: false,
                     rotas: "",
-                    coleta: [],
                     identificador: id,
                     fillColor: data[i].cor
                 });
@@ -298,4 +297,52 @@ function selecaoTruckDB(){
             selectedTruck(table);
         }
     });         
+}
+
+
+function cronogramaSalvar(){
+    var data = "id="+selected_shape.identificador+"&email="+email+"&placa="+placa
+    +"&dia="+diasemana+"&hora="+$("#hora").val();
+    $.ajax({
+        method:"post",
+        url:"../hipertext/cronograma_salvar.php",
+        data:data,
+        success: function(){
+            Materialize.toast('Coletores Salvos!', 1000);
+        }
+    });
+}
+
+function cronogramaCarregar(){
+    var data = "id="+selected_shape.identificador+"&dia="+diasemana;
+    $.ajax({
+            method:"post",
+            url:"../hipertext/cronograma_carregar.php",
+            data:data,
+            success: function(data){
+                $("#selecaodriver").val(data.nome);
+                $("#selecaotruck").val(data.modelo);
+                console.log(data.hora);
+                $("#hora").val(data.hora);
+                email = data.email;
+                placa = data.placa;
+           }
+        });   
+}
+
+function cronogramaRemover(){
+    var data = "id="+selected_shape.identificador+"&dia="+diasemana;
+    $.ajax({
+            method:"post",
+            url:"../hipertext/cronograma_remover.php",
+            data:data,
+            success: function(){
+                $("#selecaodriver").val("");
+                $("#selecaotruck").val("");
+                $("#hora").val("00:00");
+                email = "";
+                placa = "";
+                Materialize.toast('Coletores Removidos!', 1000);
+           }
+        });   
 }

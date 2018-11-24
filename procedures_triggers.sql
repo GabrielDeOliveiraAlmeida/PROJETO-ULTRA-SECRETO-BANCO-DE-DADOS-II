@@ -66,5 +66,30 @@ begin
 																			FROM caminhao
 																						 NATURAL LEFT JOIN cronograma
 																			WHERE cronograma.placa IS NULL
-			) AS theplaca, motorista where theplaca = caminhao.placa;
+			) AS theplaca, caminhao where theplaca = caminhao.placa;
 end$$
+
+
+delimiter $$
+drop procedure if exists cronograma_salvar;
+create procedure cronograma_salvar(in id int, in email varchar(60), in placa varchar(6), in hora varchar(10), in dia varchar(15))
+begin
+	replace into cronograma(id, dia, hora, email, placa) values (id, dia, hora, email, placa);
+end $$
+
+
+delimiter $$
+drop procedure if exists cronograma_carregar;
+create procedure cronograma_carregar(in id int, in dia varchar(15))
+begin
+	select hora, nome, sobrenome, modelo, cronograma.email, cronograma.placa from cronograma, motorista, caminhao where cronograma.id = id and cronograma.dia = dia 
+		and motorista.email = cronograma.email and caminhao.placa = cronograma.placa;
+end $$
+
+
+delimiter $$
+drop procedure if exists cronograma_remover;
+create procedure cronograma_remover(in id int, in dia varchar(15))
+begin
+	delete from cronograma where cronograma.id = id and cronograma.dia = dia;
+end $$

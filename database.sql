@@ -32,19 +32,6 @@ create table caminhao(
 );
 
 
-create table cronograma(
-	id int NOT null auto_increment,
-    dia varchar(15) not null,
-    hora varchar(10) not null,
-    email varchar(60),
-    placa varchar(6),
-    primary key(id),
-    constraint fk_email foreign key(email) references motorista(email),
-    constraint fk_placa foreign key(placa) references caminhao(placa)
-    on delete cascade
-    on update cascade
-);
-
 create table rota_real(
 	id int NOT null auto_increment primary key,
 	x_endereco double not null,
@@ -82,9 +69,23 @@ create table coordenadas(
 );
 
 
+create table cronograma(
+    id int not null not null,
+    dia varchar(15) not null,
+    hora varchar(10) not null,
+    email varchar(60),
+    placa varchar(6),
+    primary key(id, dia),
+    constraint fk_email foreign key(email) references motorista(email),
+    constraint fk_id_pol foreign key(id) references poligono(id),
+    constraint fk_placa foreign key(placa) references caminhao(placa)
+    on delete cascade
+    on update cascade
+);
 
 delete from poligono;
 delete from coordenadas;
+delete from cronograma;
 SET SQL_SAFE_UPDATES = 0;
 
 select * from rota order by id desc;
@@ -92,6 +93,7 @@ use horadolixo;
 select * from cidades where LOCATE('Presidente Prudente', nome);
 select * from poligono;
 select * from coordenadas;
+select * from cronograma;
 select * from rota;
 select * from motorista;
 select * from caminhao order by modelo;
@@ -130,3 +132,6 @@ call recarregar_rota(7);
 call inserircoord(1, "Ruá Bâla", 1.233232, 12.2112);
 
 call caminhao_que_nao_trabalham_no_dia('segunda');
+call cronograma_salvar(4, 'felipe@otaro.com', '555', '02:44', 'segunda');
+call cronograma_carregar(4, 'segunda');
+call cronograma_remover(4, 'segunda');

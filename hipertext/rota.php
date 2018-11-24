@@ -105,19 +105,24 @@ protect();
 <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <p>Motorista</p>
         <div>
+            <div>
+                <p>Horário inicial</p>
+                <input class="time" type="time" id="hora" required>
+            </div>
+            <p>Motorista</p>
             <input readonly="true" onclick="selecaoDriver();" type="text" id="selecaodriver" placeholder=Nome do Motorista"></input>
-            <button>-</button>
         </div>
-        <p>Caminhão</p>
         <div>
+            <p>Caminhão</p>
             <input readonly="true" onclick="selecaoTruck();" type="text" id="selecaotruck" placeholder="Nome do Motorista"></input>
-            <button>-</button>
         </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="large material-icons">close</i></a>
+        <button onclick="cronogramaRemover();" class="modal-action modal-close waves-effect waves-green btn-flat" id="cronogramarmv"><i class="material-icons">delete</i></button>
+        <button onclick="cronogramaSalvar();" class="large modal-action modal-close waves-effect waves-green btn-flat" id="cronogramabotao"><i class="large material-icons">save</i></button>
+
     </div>
   </div>
 
@@ -126,7 +131,7 @@ protect();
       
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="large material-icons">close</i></a>
     </div>
   </div>
 
@@ -150,51 +155,49 @@ protect();
 <!---TABELA DO DIA DA SEMANA - BOTÃO DIREITO-->
 <script>
  var htmlTableWeek = "<div class='tableWeek'>\n" +
- "<button id='closeTable' class='closeTable' onclick='hiddenTable()'>X</button>"+
- "<button id='closeTable' class='closeTable' onclick='saveTable()'>Salvar</button>"+
+ "<button id='closeTable' class='closeTable btn-flat' onclick='hiddenTable()'><i class='material-icons'>close</i></button>"+
  "<table id=\"tableWeek\" class='tableWeek centered highlight responsive-table'>\n" +
  "<thead>\n" +
  "<tr>\n" +
  "<th>Dias da Semana</th>\n" +
- "<th>Hora</th>\n" +
  "<th>Coletores<th>"+
  "</tr>\n" +
  "</thead>\n" +
  "<tbody>\n" +
  "<tr>\n" +
  "<td>Segunda-Feira</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('segunda')"+">+</button></td>"+
+ 
+ "<td><button class='btn-flat' onclick="+"coletores('segunda')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Terça-Feira</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('terca')"+">+</button></td>"+
+ 
+ "<td><button class='btn-flat' onclick="+"coletores('terca')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Quarta-Feira</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('quarta')"+">+</button></td>"+
+ 
+ "<td><button  class='btn-flat' onclick="+"coletores('quarta')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Quinta-Feira</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('quinta')"+">+</button></td>"+
+ 
+ "<td><button  class='btn-flat' onclick="+"coletores('quinta')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Sexta-Feira</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('sexta')"+">+</button></td>"+
+ 
+ "<td><button class='btn-flat' onclick="+"coletores('sexta')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Sabado</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('sabado')"+">+</button></td>"+
+ 
+ "<td><button class='btn-flat' onclick="+"coletores('sabado')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "<tr>\n" +
  "<td>Domingo</td>\n" +
- "<td><input type=\"time\"></input></td>\n" +
- "<td><button onclick="+"coletores('domingo')"+">+</button></td>"+
+ 
+ "<td><button class='btn-flat' onclick="+"coletores('domingo')"+"><i class='large material-icons'>add</i></button></td>"+
  "</tr>\n" +
  "</tbody>\n" +
  "</table>\n" +
@@ -223,7 +226,17 @@ protect();
 <!--MATERIALIZE-->
 <script type="text/javascript" src="../javascript/materialize.min.js"></script>
 <script>
-    
+    $("#hora").val("00:00");
+    $('.timepicker').pickatime({
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    canceltext: 'Cancel', // Text for cancel-button,
+    container: undefined, // ex. 'body' will append picker to body
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker
+  });
     $('.button-collapse').sideNav('show');
     var elem = document.getElementById('tabs');
     $(document).ready(function() {

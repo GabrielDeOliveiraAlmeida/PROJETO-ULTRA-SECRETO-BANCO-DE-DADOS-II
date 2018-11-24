@@ -72,7 +72,6 @@ function initialize() {
             draggable: false,
             editable: false,
             rotas: "",
-            coleta: [],
             identificador: 0,
             fillColor: '#ff0000',
         }

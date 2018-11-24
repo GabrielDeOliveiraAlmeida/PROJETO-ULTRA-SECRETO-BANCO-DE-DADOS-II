@@ -41,7 +41,6 @@ function selectedDriver(table){ //LINHA SELECIONADA TABELA 1
         table.rows[i].onclick = function(){
             var indexTable = this.rowIndex;
             if(indexTable != 0){
-                console.log("oi");
                 $("#selecaodriver").val(this.cells[0].innerHTML);
                 email = this.cells[1].innerHTML;
                 $("#modal2").modal("close");
@@ -150,7 +149,6 @@ function showContext() {
     $(map.getDiv()).append(contextmenuDir);
     //setMenuXY(caurrentLatLng);
     contextmenuDir.style.visibility = "visible";
-    loadTable();
 }
 
 /*
@@ -167,37 +165,45 @@ function hiddenTable(){
     SALVAR TABELA DE HORARIOS
  */
 
-function saveTable() {
-    var tableWeek = document.getElementById("tableWeek");
-    var coleta = [];
-    for(var i=1; i<8; i++) {
-        coleta[i - 1] = tableWeek.rows[i].cells[1].children[0].value;
+// function saveTable() {
+//     var tableWeek = document.getElementById("tableWeek");
+//     var coleta = [];
+//     for(var i=1; i<8; i++) {
+//         coleta[i - 1] = tableWeek.rows[i].cells[1].children[0].value;
+//     }
 
-    }
-    selected_shape.coleta = coleta;
-    polygons[index].coleta = coleta;
+//     selected_shape.coleta = coleta;
+//     polygons[index].coleta = coleta;
+//     salvarCronograma();
 
-    hiddenTable();
-}
+//     hiddenTable();
+// }
 
 /*
     CARREGAR TABELA DE HORARIOS
  */
-function loadTable(){
-    var tableWeek = document.getElementById("tableWeek");
-    if(selected_shape.coleta != [])
-        for(var i=1; i<8; i++){
-            tableWeek.rows[i].cells[1].children[0].value = polygons[index].coleta[i-1];
-        }
-}
+// function loadTable(){
+//     var tableWeek = document.getElementById("tableWeek");
+//     if(selected_shape.coleta != [])
+//         for(var i=1; i<8; i++){
+//             tableWeek.rows[i].cells[1].children[0].value = polygons[index].coleta[i-1];
+//         }
+// }
 
 var diasemana;
 function coletores(dia){
     // $('#c').removeClass('disabled');
+    $("#selecaodriver").val("");
+    $("#selecaotruck").val("");
+    $("#hora").val("00:00");
     $("#modal1").modal('open');
     diasemana = dia;
+    email = "";
+    placa = "";
+    cronogramaCarregar();
     // $('.tabs').tabs('select_tab', 'caminhao');
 }
+
 
 function selecaoDriver(){
     $("#modal2").modal('open');

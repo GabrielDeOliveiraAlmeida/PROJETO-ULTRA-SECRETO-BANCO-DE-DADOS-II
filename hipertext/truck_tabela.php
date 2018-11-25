@@ -2,7 +2,7 @@
 include_once('conexao.php');
 
 
-$sql = "SELECT * FROM horadolixo.caminhao ORDER BY modelo";
+$sql = "CALL listar_caminhoes_por_ordem_alfabetica()";
 
 $result = mysqli_query($conn, $sql);
 

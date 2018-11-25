@@ -29,8 +29,8 @@ protect();
         <li><div class = 'user-view'>
                 <div class= "background">
                 </div>
-                <a href="#!user"><img class="circle" src=""></a>
-                <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
+                <a href="#!"><img class="circle" src="../horadolixo.png"></a>
+                <a href="#!"><span class="white-text name">ADMINISTRADOR</span></a>
             </div></li>
         <ul>
             <li><div class="divider"></div></li>
@@ -261,7 +261,7 @@ protect();
     <script type="text/javascript" src="../javascript/materialize.min.js"></script>
     
 <!--GOOGLE MAPS-->
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=drawing"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDbwXqLMKGgcJASjwylctZixNeBXLLq95k&sensor=false&libraries=drawing"></script>
 <!--CODIGOS RELACIADOS AO MAPA-->
 <script src="../javascript/MapaDir/gmap.js"></script>
 <!--API GOOGLE MAPS-->

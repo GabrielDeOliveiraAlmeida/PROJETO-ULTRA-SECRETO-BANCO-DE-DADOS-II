@@ -31,7 +31,7 @@ $senha = password_hash($senha, PASSWORD_DEFAULT); //CODIFICAR SENHA
 // //password_verify($_POST['senha'], row['senha']);    //DECODIFICAR SENHA
 
 // //FAZ A PORRA DO INSERT
-$result_banco = "INSERT INTO horadolixo.motorista(email, nome, sobrenome, telefone, senha)
+$result_banco = "INSERT INTO motorista(email, nome, sobrenome, telefone, senha)
         VALUES ('$email', '$nome','$sobrenome','$telefone', '$senha')";
 
 $result= mysqli_query($conn, $result_banco);

@@ -22,7 +22,6 @@ where id_rota = id;
 end$$
 
 
-
 delimiter $$
 drop procedure if exists changecolor;
 create procedure changecolor(in id int, in color varchar(10))
@@ -69,6 +68,10 @@ begin
 			) AS theplaca, caminhao where theplaca = caminhao.placa;
 end$$
 
+
+ -- // -----------------------------------------------------------------------------------------------------------------------------//
+ -- // Procedures Cronograma
+ -- // -----------------------------------------------------------------------------------------------------------------------------//
 
 delimiter $$
 drop procedure if exists cronograma_salvar;

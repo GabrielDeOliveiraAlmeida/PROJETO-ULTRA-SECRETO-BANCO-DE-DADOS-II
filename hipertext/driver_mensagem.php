@@ -27,7 +27,7 @@ if($senha == ""){
 if($retorno["sucesso"]==FALSE){
         echo json_encode($retorno);
 }else{
-$senha = password_hash($senha, PASSWORD_DEFAULT); //CODIFICAR SENHA
+// $senha = password_hash($senha, PASSWORD_DEFAULT); //CODIFICAR SENHA (Desativado temporariamente, tendo em vista que não será usado no momento)
 // //password_verify($_POST['senha'], row['senha']);    //DECODIFICAR SENHA
 
 // //FAZ A PORRA DO INSERT

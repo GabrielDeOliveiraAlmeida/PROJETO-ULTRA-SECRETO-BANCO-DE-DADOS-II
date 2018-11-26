@@ -82,3 +82,41 @@ create table cronograma(
     on delete cascade
     on update cascade
 );
+
+ -- // -----------------------------------------------------------------------------------------------------------------------------//
+ -- // Logger Databases
+ -- // -----------------------------------------------------------------------------------------------------------------------------//
+
+
+CREATE TABLE adm_logger (
+	  id   INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	  timestamp   TIMESTAMP,
+    sqluser varchar(30) NOT NULL,
+  	action varchar(30) NOT NULL,
+  	usuario varchar(30) NOT NULL,
+    senha varchar(30) NOT NULL
+);
+
+CREATE TABLE caminhao_logger (
+	  id   INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	  timestamp   TIMESTAMP,
+    sqluser varchar(30) NOT NULL,
+  	action varchar(30) NOT NULL,
+	  modelo varchar(60) NOT NULL,
+    ano varchar(10) NOT NULL,
+    serie varchar(20) NOT NULL,
+    placa varchar(6) NOT NULL
+);
+
+
+CREATE TABLE motorista_logger (
+	  id   INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	  timestamp   TIMESTAMP,
+    sqluser varchar(30) NOT NULL,
+  	action varchar(30) NOT NULL,
+	  email varchar(60) NOT NULL,
+    nome varchar(30) NOT NULL,
+    sobrenome varchar(50) NOT NULL,
+    telefone varchar(30) NOT NULL,
+    senha varchar(255) NOT NULL
+);

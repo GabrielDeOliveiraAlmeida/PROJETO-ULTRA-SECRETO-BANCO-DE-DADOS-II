@@ -320,6 +320,7 @@ function cronogramaCarregar(){
             url:"../hipertext/cronograma_carregar.php",
             data:data,
             success: function(data){
+                data  = JSON.parse(data);
                 $("#selecaodriver").val(data.nome);
                 $("#selecaotruck").val(data.modelo);
                 console.log(data.hora);

@@ -29,7 +29,7 @@ if($retorno["sucesso"]==FALSE){
         echo json_encode($retorno);
 }else{
         //FAZ A PORRA DO INSET
-        $inserta = "INSERT INTO horadolixo.caminhao(modelo, ano, serie, placa) 
+        $inserta = "INSERT INTO caminhao(modelo, ano, serie, placa) 
                 VALUES ('$modelo', '$ano', '$serie',  '$placa')";
         $result= mysqli_query($conn, $inserta);
 

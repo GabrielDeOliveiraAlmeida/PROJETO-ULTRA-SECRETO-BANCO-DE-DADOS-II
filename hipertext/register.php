@@ -6,7 +6,7 @@ if(isset($_SESSION['user'])) header("location: rota.php");
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
-    <title>HORA DO LIXO - LOGIN</title>
+    <title>HORA DO LIXO - REGISTER</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -26,7 +26,7 @@ if(isset($_SESSION['user'])) header("location: rota.php");
             <h2 class="center-align">
                 HORA DO LIXO
             </h2>
-            <form class="login-page" method="POST" action="login_validacao.php">
+            <form class="register-page" method="POST" action="register_validacao.php">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">email</i>
@@ -37,31 +37,34 @@ if(isset($_SESSION['user'])) header("location: rota.php");
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">https</i>
-                        <input name="senha" id="inputPassword" type="password" class="validate">
-                        <label for="inputPassword">Senha*</label>
+                        <input name="senha1" id="inputPassword" type="password" class="validate">
+                        <label for="inputPasswordOne">Senha*</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">https</i>
+                        <input name="senha2" id="inputPassword" type="password" class="validate">
+                        <label for="inputPasswordTwo">Repetir Senha*</label>
                     </div>
                 </div>
                 <div class=" red-text center-align">
                     <?php
-                    if(isset($_SESSION['loginErro'])){
-                        echo $_SESSION['loginErro'];
-                        unset($_SESSION['loginErro']);
-                    }
-                    if(isset($_SESSION['logindeslogado'])){
-                        echo $_SESSION['logindeslogado'];
-                        unset($_SESSION['logindeslogado']);
+                    if(isset($_SESSION['registerErro'])){
+                        echo $_SESSION['registerErro'];
+                        unset($_SESSION['registerErro']);
                     }
                     ?>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
+                        <button type="submit" class="btn waves-effect waves-light col s12">Register</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6 m6 l6">
                         <p
-                        class="margin medium-small"><a href="register.php">Registrar Agora!</a></p>
+                        class="margin medium-small"><a href="login.php">Fazer Login!</a></p>
                     </div>
                     <!--
                     <div class="input-field col s6 m6 l6">

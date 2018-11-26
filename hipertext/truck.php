@@ -27,8 +27,8 @@ protect();
         <li><div class = 'user-view'>
             <div class= "background">
             </div>
-            <a href="#!user"><img class="circle" src=""></a>
-            <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
+                <a href="#!"><img class="circle" src="../horadolixo.png"></a>
+                <a href="#!"><span class="white-text name">ADMINISTRADOR</span></a>
         </div></li>
         <ul>
             <li><div class="divider"></div></li>
@@ -110,7 +110,7 @@ protect();
     <div class="container">
         <div class="footer-copyright">
             TRABALHO PRÁTICO DE BANCO DE DADOS II - FCT UNESP
-            <a class="grey-text text-lighten-4 right" href="help.html">Sobre</a>
+            <a class="grey-text text-lighten-4 right" href="help.php">Sobre</a>
         </div>
     </div>
 </footer>

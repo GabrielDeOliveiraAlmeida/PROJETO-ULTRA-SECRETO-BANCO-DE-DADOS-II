@@ -3,11 +3,12 @@
     CARREGA TODO OS MOTORISTAS ARMAZENADO NO BANCO DE DADOS PARA A APLICAÇÃO
 */
 function carregarTabela(){
-
+    console.log("estou aqui");
     $.ajax({
-        url:"driver_tabela.php",
+        url:"../hipertext/driver_tabela.php",
         method:"POST",
         success:function(data){
+            console.log(data);
             $('#table_driver').html(data);
         }
     });
@@ -34,7 +35,7 @@ $(document).ready(function(){
 
         $.ajax({
             method:"post",
-            url:"driver_mensagem.php",
+            url:"../hipertext/driver_mensagem.php",
             data:data,
             success: function(data){
                     var resp = JSON.parse(data);
@@ -58,7 +59,7 @@ function remover(obj){
     $("#aceito").click(function(){
         var data=obj.id;
         $.ajax({
-            url:"driver_delete.php",
+            url:"../hipertext/driver_delete.php",
             method:"post",
             data:{id:data},
             dataType:"text",

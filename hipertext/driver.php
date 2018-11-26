@@ -29,9 +29,8 @@ protect();
                 <div class='user-view'>
                     <div class="background">
                     </div>
-                    <a href="#!user"><img class="circle" src=""></a>
-                    <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
-                </div>
+                <a href="#!"><img class="circle" src="../horadolixo.png"></a>
+                <a href="#!"><span class="white-text name">ADMINISTRADOR</span></a>
             </li>
             <ul>
                 <li>
@@ -140,15 +139,13 @@ protect();
         <div class="container">
             <div class="footer-copyright">
                 TRABALHO PRÁTICO DE BANCO DE DADOS II - FCT UNESP
-                <a class="grey-text text-lighten-4 right" href="help.html">Sobre</a>
+                <a class="grey-text text-lighten-4 right" href="help.php">Sobre</a>
             </div>
         </div>
     </footer>
 
     <!--JQUERY-->
     <script type="text/javascript" src="../javascript/jquery.min.js"></script>
-    <!-- JQUERY UI -->
-    <script type="text/javascript" src="../javascript/jquery-ui.js"></script>
     <!-- JQUERY UI-->
     <script type="text/javascript" src="../javascript/jquery-ui.min.js"></script>
     <!--MATERIALIZE-->

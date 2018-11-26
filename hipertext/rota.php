@@ -29,8 +29,8 @@ protect();
         <li><div class = 'user-view'>
                 <div class= "background">
                 </div>
-                <a href="#!user"><img class="circle" src=""></a>
-                <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
+                <a href="#!"><img class="circle" src="../horadolixo.png"></a>
+                <a href="#!"><span class="white-text name">ADMINISTRADOR</span></a>
             </div></li>
         <ul>
             <li><div class="divider"></div></li>
@@ -54,7 +54,6 @@ protect();
             <ul class="tabs tabs-fixed-width" id="tabs" >
                 <li class="tab col s3 "><a href="#tabelarotas">ROTAS</a></li>
                 <li class="tab col s3"><a class="active" href="#googlemaps">MAPA</a></li>
-                <li id="c" class="tab col s3 disabled "><a href="#caminhao">COLETORES</a></li>
             </ul>
         </div>
 
@@ -211,7 +210,7 @@ protect();
     <div class="container">
         <div class="footer-copyright">
             TRABALHO PRÁTICO DE BANCO DE DADOS II - FCT UNESP
-            <a class="grey-text text-lighten-4 right" href="help.html">Sobre</a>
+            <a class="grey-text text-lighten-4 right" href="help.php">Sobre</a>
         </div>
     </div>
 </footer>
@@ -261,7 +260,7 @@ protect();
     <script type="text/javascript" src="../javascript/materialize.min.js"></script>
     
 <!--GOOGLE MAPS-->
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=drawing"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDbwXqLMKGgcJASjwylctZixNeBXLLq95k&sensor=false&libraries=drawing"></script>
 <!--CODIGOS RELACIADOS AO MAPA-->
 <script src="../javascript/MapaDir/gmap.js"></script>
 <!--API GOOGLE MAPS-->

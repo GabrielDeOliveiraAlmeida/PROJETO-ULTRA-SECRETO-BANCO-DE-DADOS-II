@@ -1,9 +1,8 @@
 <?php
 include_once('conexao.php');
 header('Content-Type: text/html; charset=utf-8');
-header('Content-Type: application/json; charset=utf-8');
 
-$sql = "SELECT * FROM horadolixo.motorista ORDER BY nome";
+$sql = "CALL listar_motoristas_por_ordem_alfabetica()";
 
 $result = mysqli_query($conn, $sql);
 

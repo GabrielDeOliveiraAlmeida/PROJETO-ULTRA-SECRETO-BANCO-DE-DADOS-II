@@ -1,5 +1,5 @@
 <?php  
 	include_once('conexao.php');
-	$sql = "DELETE FROM horadolixo.caminhao WHERE placa = '".$_POST["id"]."'";  
+	$sql = "DELETE FROM caminhao WHERE placa = '".$_POST["id"]."'";
 	mysqli_query($conn, $sql)
  ?>

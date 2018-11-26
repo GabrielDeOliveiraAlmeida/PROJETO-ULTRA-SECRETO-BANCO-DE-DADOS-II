@@ -27,8 +27,8 @@ protect();
         <li><div class = 'user-view'>
             <div class= "background">
             </div>
-            <a href="#!user"><img class="circle" src=""></a>
-            <a href="#!name"><span class="white-text name">ADMINISTRADOR</span></a>
+                <a href="#!"><img class="large circle" src="../horadolixo.png"></a>
+                <a href="#!"><span class="white-text name">ADMINISTRADOR</span></a>
         </div></li>
         <ul>
             <li><div class="divider"></div></li>
@@ -51,7 +51,10 @@ protect();
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header"><i class="material-icons">map</i>MAPA</div>
-                <div class="collapsible-body"><span>TUDO SOBRE O MAPA</span></div>
+                <div class="collapsible-body"><span>Criar Rotas</span>
+                    As rotas são criadas pelo o usuário dentro do 
+                </div>
+
             </li>
             <li>
                 <div class="collapsible-header"><i class="material-icons">time_to_leave</i>ROTAS</div>
@@ -67,7 +70,15 @@ protect();
             </li>
             <li>
                 <div class="collapsible-header active"><i class="material-icons">supervisor_account</i>SOBRE</div>
-                <div class="collapsible-body"><span>OLÁ MARILENE</span></div>
+                <div class="collapsible-body"><span>Trabalho Pratico de Banco de Dados</span>
+                    Projeto desenvolvido por:<br />
+                        Gabriel de Oliveira Almeida <br />
+                        Gustavo Lopes Santana<br />
+                        João Victor Silva Menezes<br />
+                        Luiz Henrique Zorzatto<br />
+                        Petrus Pradella <br />
+                        Sob a Orientação do Professor Doutor Ronaldo Celso Messias Correia
+                </div>
             </li>
         </ul>
     </div>
@@ -80,7 +91,7 @@ protect();
     <div class="container">
         <div class="footer-copyright">
             TRABALHO PRÁTICO DE BANCO DE DADOS II - FCT UNESP
-            <a class="grey-text text-lighten-4 right" href="help.html">Sobre</a>
+            <a class="grey-text text-lighten-4 right" href="help.php">Sobre</a>
         </div>
     </div>
 </footer>

@@ -1,4 +1,4 @@
-create database horadolixo;
+create database IF NOT EXISTS horadolixo;
 
 use horadolixo;
 
@@ -83,55 +83,40 @@ create table cronograma(
     on update cascade
 );
 
-delete from poligono;
-delete from coordenadas;
-delete from cronograma;
-SET SQL_SAFE_UPDATES = 0;
+ -- // -----------------------------------------------------------------------------------------------------------------------------//
+ -- // Logger Databases
+ -- // -----------------------------------------------------------------------------------------------------------------------------//
 
-select * from rota order by id desc;
-use horadolixo;
-select * from cidades where LOCATE('Presidente Prudente', nome);
-select * from poligono;
-select * from coordenadas;
-select * from cronograma;
-select * from rota;
-select * from motorista;
-select * from caminhao order by modelo;
-INSERT INTO motorista(email, nome, sobrenome, telefone, senha) VALUES ('ga.felis@outlook.com', 'Gabriel','$sobrenome','$telefone', '$senha');
-insert into rota(origem, destino) value ('teste','teste');
-SELECT * FROM horadolixo.cidade WHERE LOCATE('Pr',nome) ORDER BY nome ASC, estado ASC limit 10;
-SELECT * FROM cidades WHERE LOCATE('Jardim',nome);
-select id from cidades where LOCATE('Presidente Prudente', nome) and uf = 'SP';
 
-update adm set senha = "root";
-select * from adm;	
-insert into rota values(28, "Ruas2","Rua1");
-select * from coordenadas where 14 = coordenadas.id_poligono;
-insert into poligono(coord, id_cidade) values ("abc", 1);
-call inserircoord(1,0,9);
-select id_inicio from rota where 14 = rota.id_poligono is null;
-replace into rota(id_poligono,id_inicio, id_fim) values(20,90,93);
-select * from coordenadas,rota where 23 = coordenadas.id_poligono and rota.id_inicio = 23;
-update coordenadas set 
-    x_coord = 123.3,
-    y_coord = -51.405464809692376 where 10=coordenadas.id_rota and coordenadas.id = 83;
-update rota set
-    x_origem = 123.3,
-    y_destino = -51.405464809692376 where 10=rota.id;
-    
-    
-select * from coordenadas where 12 = coordenadas.id_rota;
+CREATE TABLE adm_logger (
+	  id   INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	  timestamp   TIMESTAMP,
+    sqluser varchar(30) NOT NULL,
+  	action varchar(30) NOT NULL,
+  	usuario varchar(30) NOT NULL,
+    senha varchar(30) NOT NULL
+);
 
-select poligono.id, coord, cor from poligono 
-where id_cidade = 9286;
+CREATE TABLE caminhao_logger (
+	  id   INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	  timestamp   TIMESTAMP,
+    sqluser varchar(30) NOT NULL,
+  	action varchar(30) NOT NULL,
+	  modelo varchar(60) NOT NULL,
+    ano varchar(10) NOT NULL,
+    serie varchar(20) NOT NULL,
+    placa varchar(6) NOT NULL
+);
 
-select x_coord, y_coord from coordenadas
-where id_rota = 3;
 
-call recarregar_rota(7);
-call inserircoord(1, "Ruá Bâla", 1.233232, 12.2112);
-
-call caminhao_que_nao_trabalham_no_dia('segunda');
-call cronograma_salvar(4, 'felipe@otaro.com', '555', '02:44', 'segunda');
-call cronograma_carregar(4, 'segunda');
-call cronograma_remover(4, 'segunda');
+CREATE TABLE motorista_logger (
+	  id   INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	  timestamp   TIMESTAMP,
+    sqluser varchar(30) NOT NULL,
+  	action varchar(30) NOT NULL,
+	  email varchar(60) NOT NULL,
+    nome varchar(30) NOT NULL,
+    sobrenome varchar(50) NOT NULL,
+    telefone varchar(30) NOT NULL,
+    senha varchar(255) NOT NULL
+);

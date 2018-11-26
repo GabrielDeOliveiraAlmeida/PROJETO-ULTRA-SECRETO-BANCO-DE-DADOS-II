@@ -9780,7 +9780,7 @@ INSERT INTO cidades (`id`, `estado`, `uf`, `nome`) VALUES
 --
 -- Indexes for dumped tables
 --
-select * from cidades where id = 9714;
+-- select * from cidades where id = 9714;
 --
 -- Indexes for table `tb_cidades`
 --
